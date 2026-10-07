@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import KanbanColumn from "./KanbanColumn";
 
-const KanbanBoard = () => {
+const KanbanBoard = ({ onTaskClick }) => {
     const tasks = useSelector((state) => state.tasks.tasks);
 
     const columns = [
@@ -46,6 +46,7 @@ const KanbanBoard = () => {
                         dotColor={column.dotColor}
                         status={column.status}
                         tasks={columnTasks}
+                        onTaskClick={onTaskClick}
                     />
                 );
             })}

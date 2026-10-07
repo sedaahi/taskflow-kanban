@@ -42,23 +42,53 @@ const initialState = {
 };
 
 const taskSlice = createSlice({
-  name: "tasks",
-  initialState,
-  reducers: {
-    updateTaskStatus: (state, action) => {
-      const { taskId, status } = action.payload;
+    name: "tasks",
+    initialState,
+    reducers: {
+        addTask: (state, action) => {
+            state.tasks.push(action.payload);
+        },
 
-      const task = state.tasks.find(
-        (task) => task.id === taskId
-      );
+        updateTask: (state, action) => {
+            const updatedTask = action.payload;
 
-      if (task) {
-        task.status = status;
-      }
+            const index = state.tasks.findIndex(
+                (task) => task.id === updatedTask.id
+            );
+
+            if (index !== -1) {
+                state.tasks[index] = {
+                    ...state.tasks[index],
+                    ...updatedTask,
+                };
+            }
+        },
+
+        deleteTask: (state, action) => {
+            state.tasks = state.tasks.filter(
+                (task) => task.id !== action.payload
+            );
+        },
+
+        updateTaskStatus: (state, action) => {
+            const { taskId, status } = action.payload;
+
+            const task = state.tasks.find(
+                (task) => task.id === taskId
+            );
+
+            if (task) {
+                task.status = status;
+            }
+        },
     },
-  },
 });
 
-export const { updateTaskStatus } = taskSlice.actions;
+export const {
+    addTask,
+    updateTask,
+    deleteTask,
+    updateTaskStatus,
+} = taskSlice.actions;
 
 export default taskSlice.reducer;

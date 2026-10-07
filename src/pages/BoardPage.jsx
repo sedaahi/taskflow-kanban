@@ -1,10 +1,15 @@
+import { useState } from "react";
 import KanbanBoard from "../components/KanbanBoard";
+import TaskDetailModal from "../components/TaskDetailModal";
 
 const BoardPage = () => {
+
+  const [selectedTask, setSelectedTask] = useState(null);
+
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top_right,_#665875_0%,_#293d66_35%,_#172744_70%,_#101b30_100%)] text-white">
       <div className="mx-auto min-h-screen max-w-[1500px] px-6 py-6 lg:px-10">
-        
+
         {/* Header */}
         <header className="flex items-center justify-between border-b border-white/15 pb-5">
           <div className="flex items-center gap-3">
@@ -61,8 +66,17 @@ const BoardPage = () => {
         </section>
 
         {/* Kanban */}
-        <KanbanBoard />
+        <KanbanBoard onTaskClick={setSelectedTask} />
       </div>
+
+      {selectedTask && (
+        <TaskDetailModal
+          task={selectedTask}
+          onClose={() => setSelectedTask(null)}
+          onEdit={() => console.log("Edit", selectedTask)}
+          onDelete={() => console.log("Delete", selectedTask)}
+        />
+      )}
     </main>
   );
 };

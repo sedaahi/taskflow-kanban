@@ -8,6 +8,7 @@ const KanbanColumn = ({
     dotColor,
     status,
     tasks,
+    onTaskClick,
 }) => {
 
     const dispatch = useDispatch();
@@ -63,6 +64,7 @@ const KanbanColumn = ({
                     <TaskCard
                         key={task.id}
                         task={task}
+                        onClick={onTaskClick}
                     />
                 ))}
             </div>

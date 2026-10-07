@@ -1,4 +1,4 @@
-const TaskCard = ({ task }) => {
+const TaskCard = ({ task, onClick }) => {
   const handleDragStart = (event) => {
     event.dataTransfer.setData(
       "taskId",
@@ -12,18 +12,18 @@ const TaskCard = ({ task }) => {
   };
 
   return (
-  <div
-  draggable
-  onDragStart={handleDragStart}
-  className="cursor-grab rounded-2xl border border-white/15 bg-white/[0.12] p-4 shadow-lg shadow-black/10 backdrop-blur-md transition duration-200 hover:-translate-y-0.5 hover:bg-white/[0.16] active:cursor-grabbing"
->
+    <div
+      draggable
+      onDragStart={handleDragStart}
+      onClick={() => onClick(task)}
+      className="cursor-grab rounded-2xl border border-white/15 bg-white/[0.12] p-4 shadow-lg shadow-black/10 backdrop-blur-md transition duration-200 hover:-translate-y-0.5 hover:bg-white/[0.16] active:cursor-grabbing"
+    >
       <div className="mb-3 flex items-start justify-between gap-3">
         <h3 className="font-semibold text-white">{task.title}</h3>
 
         <span
-          className={`rounded-full px-2.5 py-1 text-xs font-medium ${
-            priorityStyles[task.priority]
-          }`}
+          className={`rounded-full px-2.5 py-1 text-xs font-medium ${priorityStyles[task.priority]
+            }`}
         >
           {task.priority}
         </span>
