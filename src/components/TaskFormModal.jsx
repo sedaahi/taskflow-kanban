@@ -116,23 +116,12 @@ const TaskFormModal = ({ task, onClose, onSubmit }) => {
                   name="status"
                   value={formData.status}
                   onChange={handleChange}
-                  className={selectClassName}
+                  className="w-full cursor-pointer rounded-xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm text-[var(--text-primary)] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10"
                 >
-                  <option value="pending">
-                    Backlog
-                  </option>
-
-                  <option value="in-progress">
-                    Active
-                  </option>
-
-                  <option value="completed">
-                    Completed
-                  </option>
-
-                  <option value="blocked">
-                    Blocked
-                  </option>
+                  <option value="pending">Backlog</option>
+                  <option value="in-progress">Active</option>
+                  <option value="completed">Completed</option>
+                  <option value="blocked">Blocked</option>
                 </select>
               </div>
 
@@ -146,19 +135,11 @@ const TaskFormModal = ({ task, onClose, onSubmit }) => {
                   name="priority"
                   value={formData.priority}
                   onChange={handleChange}
-                  className={selectClassName}
+                  className="w-full cursor-pointer rounded-xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm text-[var(--text-primary)] outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500/10"
                 >
-                  <option value="low">
-                    Low
-                  </option>
-
-                  <option value="medium">
-                    Medium
-                  </option>
-
-                  <option value="high">
-                    High
-                  </option>
+                  <option value="low">Low</option>
+                  <option value="medium">Medium</option>
+                  <option value="high">High</option>
                 </select>
               </div>
             </div>

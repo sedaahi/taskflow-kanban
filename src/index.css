@@ -169,3 +169,28 @@
 --badge-high-bg: #ffe4e6;
 --badge-high-text: #be123c;
 }
+
+/* Form controls */
+select,
+input,
+textarea {
+  color-scheme: inherit;
+}
+
+.light select {
+  color-scheme: light;
+}
+
+.dark select {
+  color-scheme: dark;
+}
+
+.light select option {
+  background-color: #ffffff;
+  color: #172033;
+}
+
+.dark select option {
+  background-color: #243854;
+  color: #f8fafc;
+}
