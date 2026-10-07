@@ -39,6 +39,7 @@ const initialState = {
             createdAt: "2026-09-25T11:00:00.000Z",
         },
     ],
+    searchText: "",
 };
 
 const taskSlice = createSlice({
@@ -81,6 +82,9 @@ const taskSlice = createSlice({
                 task.status = status;
             }
         },
+        setSearchText: (state, action) => {
+            state.searchText = action.payload;
+        },
     },
 });
 
@@ -89,6 +93,7 @@ export const {
     updateTask,
     deleteTask,
     updateTaskStatus,
+    setSearchText,
 } = taskSlice.actions;
 
 export default taskSlice.reducer;

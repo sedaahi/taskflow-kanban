@@ -1,11 +1,18 @@
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { setSearchText } from "../store/taskSlice";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+
+  const searchText = useSelector(
+    (state) => state.tasks.searchText
+  );
+
   const getNavLinkClass = ({ isActive }) =>
-    `rounded-lg px-3 py-2 text-sm transition ${
-      isActive
-        ? "bg-white/10 text-white"
-        : "text-white/50 hover:bg-white/[0.06] hover:text-white"
+    `rounded-lg px-3 py-2 text-sm transition ${isActive
+      ? "bg-white/10 text-white"
+      : "text-white/50 hover:bg-white/[0.06] hover:text-white"
     }`;
 
   return (
@@ -50,17 +57,21 @@ const Navbar = () => {
 
         {/* Right Side */}
         <div className="flex items-center gap-3">
-          {/* <div className="hidden w-64 items-center rounded-full border border-white/10 bg-white/10 px-4 py-2.5 backdrop-blur-xl lg:flex">
+          <div className="hidden w-64 items-center rounded-full border border-white/10 bg-white/10 px-4 py-2.5 backdrop-blur-xl lg:flex">
             <span className="mr-2 text-white/40">
               ⌕
             </span>
 
             <input
               type="text"
+              value={searchText}
+              onChange={(event) =>
+                dispatch(setSearchText(event.target.value))
+              }
               placeholder="Search tasks..."
               className="w-full bg-transparent text-sm text-white outline-none placeholder:text-white/40"
             />
-          </div> */}
+          </div>
 
           <div className="grid h-10 w-10 place-items-center rounded-full bg-blue-500 text-sm font-medium text-white shadow-lg shadow-blue-950/20">
             S

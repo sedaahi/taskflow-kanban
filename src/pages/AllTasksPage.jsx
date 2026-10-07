@@ -1,8 +1,17 @@
 import { useSelector } from "react-redux";
+import { filterTasksBySearch } from "../utils/taskUtils";
 
 const AllTasksPage = () => {
-    
   const tasks = useSelector((state) => state.tasks.tasks);
+
+  const searchText = useSelector(
+    (state) => state.tasks.searchText
+  );
+
+  const filteredTasks = filterTasksBySearch(
+    tasks,
+    searchText
+  );
 
   const statusLabels = {
     pending: "Backlog",
@@ -25,52 +34,54 @@ const AllTasksPage = () => {
   };
 
   return (
-      <div className="mx-auto max-w-[1500px] px-6 py-8 lg:px-10">
-        <div className="mb-8">
-        
+    <div className="mx-auto max-w-[1500px] px-6 py-8 lg:px-10">
+      {/* Page Header */}
+      <div className="mb-8">
+        <h1 className="text-3xl font-semibold">
+          All Tasks
+        </h1>
 
-          <h1 className="text-3xl font-semibold">
-            All Tasks
-          </h1>
+        <p className="mt-2 text-sm text-white/50">
+          View and track all tasks in one place.
+        </p>
+      </div>
 
-          <p className="mt-2 text-sm text-white/50">
-            View and track all tasks in one place.
-          </p>
-        </div>
+      {/* Tasks Table */}
+      <div className="overflow-hidden rounded-2xl border border-white/15 bg-white/[0.08] backdrop-blur-xl">
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[800px] text-left">
+            <thead className="border-b border-white/10 bg-white/[0.05]">
+              <tr className="text-xs uppercase tracking-wider text-white/40">
+                <th className="px-5 py-4 font-medium">
+                  Task
+                </th>
 
-        <div className="overflow-hidden rounded-2xl border border-white/15 bg-white/[0.08] backdrop-blur-xl">
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[800px] text-left">
-              <thead className="border-b border-white/10 bg-white/[0.05]">
-                <tr className="text-xs uppercase tracking-wider text-white/40">
-                  <th className="px-5 py-4 font-medium">
-                    Task
-                  </th>
+                <th className="px-5 py-4 font-medium">
+                  Status
+                </th>
 
-                  <th className="px-5 py-4 font-medium">
-                    Status
-                  </th>
+                <th className="px-5 py-4 font-medium">
+                  Priority
+                </th>
 
-                  <th className="px-5 py-4 font-medium">
-                    Priority
-                  </th>
+                <th className="px-5 py-4 font-medium">
+                  Assignee
+                </th>
 
-                  <th className="px-5 py-4 font-medium">
-                    Assignee
-                  </th>
+                <th className="px-5 py-4 font-medium">
+                  Created
+                </th>
+              </tr>
+            </thead>
 
-                  <th className="px-5 py-4 font-medium">
-                    Created
-                  </th>
-                </tr>
-              </thead>
-
-              <tbody>
-                {tasks.map((task) => (
+            <tbody>
+              {filteredTasks.length > 0 ? (
+                filteredTasks.map((task) => (
                   <tr
                     key={task.id}
                     className="border-b border-white/[0.07] transition last:border-0 hover:bg-white/[0.05]"
                   >
+                    {/* Task */}
                     <td className="px-5 py-4">
                       <p className="font-medium text-white">
                         {task.title}
@@ -81,6 +92,7 @@ const AllTasksPage = () => {
                       </p>
                     </td>
 
+                    {/* Status */}
                     <td className="px-5 py-4">
                       <span
                         className={`rounded-full px-3 py-1 text-xs ${
@@ -91,6 +103,7 @@ const AllTasksPage = () => {
                       </span>
                     </td>
 
+                    {/* Priority */}
                     <td className="px-5 py-4">
                       <span
                         className={`rounded-full px-3 py-1 text-xs capitalize ${
@@ -101,26 +114,50 @@ const AllTasksPage = () => {
                       </span>
                     </td>
 
+                    {/* Assignee */}
                     <td className="px-5 py-4 text-sm text-white/70">
                       {task.assignee}
                     </td>
 
+                    {/* Created Date */}
                     <td className="px-5 py-4 text-sm text-white/50">
                       {new Date(
                         task.createdAt
                       ).toLocaleDateString("en-GB")}
                     </td>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+                ))
+              ) : (
+                /* Empty Search Result */
+                <tr>
+                  <td
+                    colSpan="5"
+                    className="px-5 py-12 text-center"
+                  >
+                    <p className="text-sm font-medium text-white/70">
+                      No tasks found.
+                    </p>
 
-        <p className="mt-4 text-sm text-white/40">
-          {tasks.length} {tasks.length === 1 ? "task" : "tasks"} in total
-        </p>
+                    <p className="mt-1 text-xs text-white/40">
+                      Try searching with a different keyword.
+                    </p>
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
+
+      {/* Task Count */}
+      <p className="mt-4 text-sm text-white/40">
+        {searchText.trim()
+          ? `${filteredTasks.length} of ${tasks.length} tasks shown`
+          : `${tasks.length} ${
+              tasks.length === 1 ? "task" : "tasks"
+            } in total`}
+      </p>
+    </div>
   );
 };
 

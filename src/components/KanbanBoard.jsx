@@ -1,8 +1,18 @@
 import { useSelector } from "react-redux";
 import KanbanColumn from "./KanbanColumn";
+import { filterTasksBySearch } from "../utils/taskUtils";
 
 const KanbanBoard = ({ onTaskClick }) => {
     const tasks = useSelector((state) => state.tasks.tasks);
+
+    const searchText = useSelector(
+        (state) => state.tasks.searchText
+    );
+
+    const filteredTasks = filterTasksBySearch(
+        tasks,
+        searchText
+    );
 
     const columns = [
         {
@@ -34,7 +44,7 @@ const KanbanBoard = ({ onTaskClick }) => {
     return (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
             {columns.map((column) => {
-                const columnTasks = tasks.filter(
+                const columnTasks = filteredTasks.filter(
                     (task) => task.status === column.status
                 );
 
