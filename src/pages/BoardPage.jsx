@@ -1,10 +1,58 @@
 import { useState } from "react";
 import KanbanBoard from "../components/KanbanBoard";
 import TaskDetailModal from "../components/TaskDetailModal";
+import { useDispatch } from "react-redux";
+import TaskFormModal from "../components/TaskFormModal";
+import { addTask, updateTask, deleteTask } from "../store/taskSlice";
+import DeleteTaskModal from "../components/DeleteTaskModal";
 
 const BoardPage = () => {
 
+  const dispatch = useDispatch();
+
   const [selectedTask, setSelectedTask] = useState(null);
+  const [editingTask, setEditingTask] = useState(null);
+  const [isCreatingTask, setIsCreatingTask] = useState(false);
+  const [deletingTask, setDeletingTask] = useState(null);
+
+  const handleEdit = () => {
+    setEditingTask(selectedTask);
+    setSelectedTask(null);
+  };
+
+  const handleUpdateTask = (formData) => {
+    dispatch(
+      updateTask({
+        ...editingTask,
+        ...formData,
+      })
+    );
+
+    setEditingTask(null);
+  };
+
+  const handleCreateTask = (formData) => {
+    const newTask = {
+      id: Date.now(),
+      ...formData,
+      createdAt: new Date().toISOString(),
+    };
+
+    dispatch(addTask(newTask));
+
+    setIsCreatingTask(false);
+  };
+
+  const handleDeleteClick = () => {
+    setDeletingTask(selectedTask);
+    setSelectedTask(null);
+  };
+
+  const handleDeleteTask = () => {
+    dispatch(deleteTask(deletingTask.id));
+
+    setDeletingTask(null);
+  };
 
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top_right,_#665875_0%,_#293d66_35%,_#172744_70%,_#101b30_100%)] text-white">
@@ -60,7 +108,11 @@ const BoardPage = () => {
             </p>
           </div>
 
-          <button className="w-fit rounded-xl bg-blue-500 px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-blue-950/30 transition hover:bg-blue-400">
+          <button
+            type="button"
+            onClick={() => setIsCreatingTask(true)}
+            className="w-fit rounded-xl bg-blue-500 px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-blue-950/30 transition hover:bg-blue-400"
+          >
             + New Task
           </button>
         </section>
@@ -73,10 +125,34 @@ const BoardPage = () => {
         <TaskDetailModal
           task={selectedTask}
           onClose={() => setSelectedTask(null)}
-          onEdit={() => console.log("Edit", selectedTask)}
-          onDelete={() => console.log("Delete", selectedTask)}
+          onEdit={handleEdit}
+          onDelete={handleDeleteClick}
         />
       )}
+
+      {editingTask && (
+        <TaskFormModal
+          task={editingTask}
+          onClose={() => setEditingTask(null)}
+          onSubmit={handleUpdateTask}
+        />
+      )}
+
+      {isCreatingTask && (
+        <TaskFormModal
+          onClose={() => setIsCreatingTask(false)}
+          onSubmit={handleCreateTask}
+        />
+      )}
+
+      {deletingTask && (
+        <DeleteTaskModal
+          task={deletingTask}
+          onClose={() => setDeletingTask(null)}
+          onConfirm={handleDeleteTask}
+        />
+      )}
+
     </main>
   );
 };
