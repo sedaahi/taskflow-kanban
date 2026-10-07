@@ -60,15 +60,15 @@ const BoardPage = () => {
         {/* Hero */}
         <section className="flex flex-col gap-6 py-8 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="mb-2 text-sm text-white/55">
+            <p className="mb-2 text-sm text-[var(--text-muted)]">
               Your personal workspace
             </p>
 
-            <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
+            <h2 className="text-3xl font-semibold tracking-tight text-[var(--text-primary)] md:text-4xl">
               How's your day going?
             </h2>
 
-            <p className="mt-3 max-w-xl text-sm leading-6 text-white/50">
+            <p className="mt-3 max-w-xl text-sm leading-6 text-[var(--text-muted)]">
               Organize your work, stay focused, and keep track of your progress.
             </p>
           </div>

@@ -1,1 +1,171 @@
 @import "tailwindcss";
+
+/* =========================
+   DARK THEME - DEFAULT
+   ========================= */
+
+:root {
+  color-scheme: dark;
+
+  /* Text */
+  --text-primary: #f8fafc;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-muted: rgba(255, 255, 255, 0.45);
+
+  /* Surfaces */
+  --surface: rgba(255, 255, 255, 0.08);
+  --surface-hover: rgba(255, 255, 255, 0.12);
+  --surface-strong: rgba(255, 255, 255, 0.1);
+
+  /* Borders */
+  --border: rgba(255, 255, 255, 0.15);
+  --border-soft: rgba(255, 255, 255, 0.08);
+
+  /* Modal */
+  --modal-bg: rgba(30, 45, 70, 0.96);
+  --modal-footer: rgba(15, 23, 42, 0.25);
+
+  /* Status - Backlog */
+  --status-backlog-bg: rgba(148, 163, 184, 0.2);
+  --status-backlog-text: #e2e8f0;
+
+  /* Status - Active */
+  --status-active-bg: rgba(59, 130, 246, 0.2);
+  --status-active-text: #bfdbfe;
+
+  /* Status - Completed */
+  --status-completed-bg: rgba(16, 185, 129, 0.2);
+  --status-completed-text: #a7f3d0;
+
+  /* Status - Blocked */
+  --status-blocked-bg: rgba(244, 63, 94, 0.2);
+  --status-blocked-text: #fecdd3;
+
+  /* Priority - High */
+  --priority-high-bg: rgba(244, 63, 94, 0.2);
+  --priority-high-text: #fecdd3;
+
+  /* Priority - Medium */
+  --priority-medium-bg: rgba(245, 158, 11, 0.2);
+  --priority-medium-text: #fde68a;
+
+  /* Priority - Low */
+  --priority-low-bg: rgba(16, 185, 129, 0.2);
+  --priority-low-text: #a7f3d0;
+
+  /* Avatar */
+  --avatar-bg: rgba(59, 130, 246, 0.2);
+  --avatar-text: #bfdbfe;
+
+  /* Badge colors - Dark */
+--badge-backlog-bg: rgba(148, 163, 184, 0.18);
+--badge-backlog-text: #e2e8f0;
+
+--badge-active-bg: rgba(59, 130, 246, 0.2);
+--badge-active-text: #bfdbfe;
+
+--badge-completed-bg: rgba(16, 185, 129, 0.2);
+--badge-completed-text: #a7f3d0;
+
+--badge-blocked-bg: rgba(244, 63, 94, 0.2);
+--badge-blocked-text: #fecdd3;
+
+--badge-low-bg: rgba(16, 185, 129, 0.2);
+--badge-low-text: #a7f3d0;
+
+--badge-medium-bg: rgba(245, 158, 11, 0.2);
+--badge-medium-text: #fde68a;
+
+--badge-high-bg: rgba(244, 63, 94, 0.2);
+--badge-high-text: #fecdd3;
+}
+
+
+/* =========================
+   DARK THEME
+   ========================= */
+
+.dark {
+  color-scheme: dark;
+}
+
+
+/* =========================
+   LIGHT THEME
+   ========================= */
+
+.light {
+  color-scheme: light;
+
+  /* Text */
+  --text-primary: #172033;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+
+  /* Surfaces */
+  --surface: rgba(255, 255, 255, 0.5);
+  --surface-hover: rgba(255, 255, 255, 0.72);
+  --surface-strong: rgba(255, 255, 255, 0.88);
+
+  /* Borders */
+  --border: rgba(71, 85, 105, 0.15);
+  --border-soft: rgba(71, 85, 105, 0.1);
+
+  /* Modal */
+  --modal-bg: rgba(255, 255, 255, 0.96);
+  --modal-footer: rgba(241, 245, 249, 0.8);
+
+  /* Status - Backlog */
+  --status-backlog-bg: #e2e8f0;
+  --status-backlog-text: #334155;
+
+  /* Status - Active */
+  --status-active-bg: #dbeafe;
+  --status-active-text: #1d4ed8;
+
+  /* Status - Completed */
+  --status-completed-bg: #d1fae5;
+  --status-completed-text: #047857;
+
+  /* Status - Blocked */
+  --status-blocked-bg: #ffe4e6;
+  --status-blocked-text: #be123c;
+
+  /* Priority - High */
+  --priority-high-bg: #ffe4e6;
+  --priority-high-text: #be123c;
+
+  /* Priority - Medium */
+  --priority-medium-bg: #fef3c7;
+  --priority-medium-text: #a16207;
+
+  /* Priority - Low */
+  --priority-low-bg: #d1fae5;
+  --priority-low-text: #047857;
+
+  /* Avatar */
+  --avatar-bg: #dbeafe;
+  --avatar-text: #1d4ed8;
+
+  /* Badge colors - Light */
+--badge-backlog-bg: #e2e8f0;
+--badge-backlog-text: #334155;
+
+--badge-active-bg: #dbeafe;
+--badge-active-text: #1d4ed8;
+
+--badge-completed-bg: #d1fae5;
+--badge-completed-text: #047857;
+
+--badge-blocked-bg: #ffe4e6;
+--badge-blocked-text: #be123c;
+
+--badge-low-bg: #d1fae5;
+--badge-low-text: #047857;
+
+--badge-medium-bg: #fef3c7;
+--badge-medium-text: #b45309;
+
+--badge-high-bg: #ffe4e6;
+--badge-high-text: #be123c;
+}

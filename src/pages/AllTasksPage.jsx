@@ -21,37 +21,119 @@ const AllTasksPage = () => {
   };
 
   const statusStyles = {
-    pending: "bg-slate-500/20 text-slate-200",
-    "in-progress": "bg-blue-500/20 text-blue-200",
-    completed: "bg-emerald-500/20 text-emerald-200",
-    blocked: "bg-red-500/20 text-red-200",
+    pending:
+      "bg-[var(--badge-backlog-bg)] text-[var(--badge-backlog-text)]",
+    "in-progress":
+      "bg-[var(--badge-active-bg)] text-[var(--badge-active-text)]",
+    completed:
+      "bg-[var(--badge-completed-bg)] text-[var(--badge-completed-text)]",
+    blocked:
+      "bg-[var(--badge-blocked-bg)] text-[var(--badge-blocked-text)]",
   };
 
   const priorityStyles = {
-    low: "bg-emerald-500/20 text-emerald-200",
-    medium: "bg-amber-500/20 text-amber-200",
-    high: "bg-red-500/20 text-red-200",
+    low:
+      "bg-[var(--badge-low-bg)] text-[var(--badge-low-text)]",
+    medium:
+      "bg-[var(--badge-medium-bg)] text-[var(--badge-medium-text)]",
+    high:
+      "bg-[var(--badge-high-bg)] text-[var(--badge-high-text)]",
   };
 
   return (
     <div className="mx-auto max-w-[1500px] px-6 py-8 lg:px-10">
       {/* Page Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-semibold">
+        <h1 className="text-3xl font-semibold text-[var(--text-primary)]">
           All Tasks
         </h1>
 
-        <p className="mt-2 text-sm text-white/50">
+        <p className="mt-2 text-sm text-[var(--text-muted)]">
           View and track all tasks in one place.
         </p>
       </div>
 
-      {/* Tasks Table */}
-      <div className="overflow-hidden rounded-2xl border border-white/15 bg-white/[0.08] backdrop-blur-xl">
+      {/* =========================
+          MOBILE TASK LIST
+      ========================== */}
+      <div className="space-y-3 md:hidden">
+        {filteredTasks.length > 0 ? (
+          filteredTasks.map((task) => (
+            <div
+              key={task.id}
+              className="rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] p-4 shadow-sm"
+            >
+              {/* Title + Priority */}
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0 flex-1">
+                  <h2 className="font-medium text-[var(--text-primary)]">
+                    {task.title}
+                  </h2>
+
+                  <p className="mt-1 text-sm leading-5 text-[var(--text-muted)]">
+                    {task.description}
+                  </p>
+                </div>
+
+                <span
+                  className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-semibold ${
+                    priorityStyles[task.priority]
+                  }`}
+                >
+                  {task.priority.charAt(0).toUpperCase() +
+                    task.priority.slice(1)}
+                </span>
+              </div>
+
+              {/* Bottom Info */}
+              <div className="mt-4 grid grid-cols-[1fr_auto_1fr] items-center gap-2 border-t border-[var(--border-soft)] pt-3">
+                {/* Status */}
+                <div className="justify-self-start">
+                  <span
+                    className={`inline-block rounded-full px-2.5 py-1 text-xs font-semibold ${
+                      statusStyles[task.status]
+                    }`}
+                  >
+                    {statusLabels[task.status] ||
+                      task.status}
+                  </span>
+                </div>
+
+                {/* Assignee */}
+                <span className="whitespace-nowrap text-center text-xs text-[var(--text-secondary)]">
+                  {task.assignee}
+                </span>
+
+                {/* Date */}
+                <span className="justify-self-end whitespace-nowrap text-xs text-[var(--text-muted)]">
+                  {new Date(
+                    task.createdAt
+                  ).toLocaleDateString("en-GB")}
+                </span>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-5 py-10 text-center">
+            <p className="text-sm font-medium text-[var(--text-primary)]">
+              No tasks found.
+            </p>
+
+            <p className="mt-1 text-xs text-[var(--text-muted)]">
+              Try searching with a different keyword.
+            </p>
+          </div>
+        )}
+      </div>
+
+      {/* =========================
+          DESKTOP TABLE
+      ========================== */}
+      <div className="hidden overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] shadow-lg shadow-black/5 backdrop-blur-xl md:block">
         <div className="overflow-x-auto">
           <table className="w-full min-w-[800px] text-left">
-            <thead className="border-b border-white/10 bg-white/[0.05]">
-              <tr className="text-xs uppercase tracking-wider text-white/40">
+            <thead className="border-b border-[var(--border-soft)] bg-[var(--surface-strong)]">
+              <tr className="text-xs uppercase tracking-wider text-[var(--text-muted)]">
                 <th className="px-5 py-4 font-medium">
                   Task
                 </th>
@@ -79,15 +161,15 @@ const AllTasksPage = () => {
                 filteredTasks.map((task) => (
                   <tr
                     key={task.id}
-                    className="border-b border-white/[0.07] transition last:border-0 hover:bg-white/[0.05]"
+                    className="border-b border-[var(--border-soft)] transition last:border-0 hover:bg-[var(--surface-hover)]"
                   >
                     {/* Task */}
                     <td className="px-5 py-4">
-                      <p className="font-medium text-white">
+                      <p className="font-medium text-[var(--text-primary)]">
                         {task.title}
                       </p>
 
-                      <p className="mt-1 max-w-md truncate text-xs text-white/40">
+                      <p className="mt-1 max-w-md truncate text-xs text-[var(--text-muted)]">
                         {task.description}
                       </p>
                     </td>
@@ -95,18 +177,19 @@ const AllTasksPage = () => {
                     {/* Status */}
                     <td className="px-5 py-4">
                       <span
-                        className={`rounded-full px-3 py-1 text-xs ${
+                        className={`inline-block rounded-full px-3 py-1 text-xs font-semibold ${
                           statusStyles[task.status]
                         }`}
                       >
-                        {statusLabels[task.status]}
+                        {statusLabels[task.status] ||
+                          task.status}
                       </span>
                     </td>
 
                     {/* Priority */}
                     <td className="px-5 py-4">
                       <span
-                        className={`rounded-full px-3 py-1 text-xs capitalize ${
+                        className={`inline-block rounded-full px-3 py-1 text-xs font-semibold capitalize ${
                           priorityStyles[task.priority]
                         }`}
                       >
@@ -115,12 +198,12 @@ const AllTasksPage = () => {
                     </td>
 
                     {/* Assignee */}
-                    <td className="px-5 py-4 text-sm text-white/70">
+                    <td className="px-5 py-4 text-sm text-[var(--text-secondary)]">
                       {task.assignee}
                     </td>
 
-                    {/* Created Date */}
-                    <td className="px-5 py-4 text-sm text-white/50">
+                    {/* Created */}
+                    <td className="px-5 py-4 text-sm text-[var(--text-muted)]">
                       {new Date(
                         task.createdAt
                       ).toLocaleDateString("en-GB")}
@@ -128,18 +211,18 @@ const AllTasksPage = () => {
                   </tr>
                 ))
               ) : (
-                /* Empty Search Result */
                 <tr>
                   <td
                     colSpan="5"
                     className="px-5 py-12 text-center"
                   >
-                    <p className="text-sm font-medium text-white/70">
+                    <p className="text-sm font-medium text-[var(--text-primary)]">
                       No tasks found.
                     </p>
 
-                    <p className="mt-1 text-xs text-white/40">
-                      Try searching with a different keyword.
+                    <p className="mt-1 text-xs text-[var(--text-muted)]">
+                      Try searching with a different
+                      keyword.
                     </p>
                   </td>
                 </tr>
@@ -150,7 +233,7 @@ const AllTasksPage = () => {
       </div>
 
       {/* Task Count */}
-      <p className="mt-4 text-sm text-white/40">
+      <p className="mt-4 text-sm text-[var(--text-muted)]">
         {searchText.trim()
           ? `${filteredTasks.length} of ${tasks.length} tasks shown`
           : `${tasks.length} ${

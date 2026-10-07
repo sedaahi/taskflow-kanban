@@ -1,14 +1,24 @@
 const TaskCard = ({ task, onClick }) => {
+  const priorityStyles = {
+    high: {
+      backgroundColor: "var(--priority-high-bg)",
+      color: "var(--priority-high-text)",
+    },
+    medium: {
+      backgroundColor: "var(--priority-medium-bg)",
+      color: "var(--priority-medium-text)",
+    },
+    low: {
+      backgroundColor: "var(--priority-low-bg)",
+      color: "var(--priority-low-text)",
+    },
+  };
+
   const handleDragStart = (event) => {
     event.dataTransfer.setData(
       "taskId",
       task.id.toString()
     );
-  };
-  const priorityStyles = {
-    high: "bg-red-500/20 text-red-200",
-    medium: "bg-amber-500/20 text-amber-200",
-    low: "bg-emerald-500/20 text-emerald-200",
   };
 
   return (
@@ -16,28 +26,43 @@ const TaskCard = ({ task, onClick }) => {
       draggable
       onDragStart={handleDragStart}
       onClick={() => onClick(task)}
-      className="cursor-grab rounded-2xl border border-white/15 bg-white/[0.12] p-4 shadow-lg shadow-black/10 backdrop-blur-md transition duration-200 hover:-translate-y-0.5 hover:bg-white/[0.16] active:cursor-grabbing"
+      className="cursor-grab rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] p-4 shadow-lg shadow-black/10 backdrop-blur-md transition duration-200 hover:-translate-y-0.5 hover:bg-[var(--surface-hover)] active:cursor-grabbing"
     >
-      <div className="mb-3 flex items-start justify-between gap-3">
-        <h3 className="font-semibold text-white">{task.title}</h3>
+      {/* Header */}
+      <div className="flex items-start justify-between gap-3">
+        <h4 className="font-medium text-[var(--text-primary)]">
+          {task.title}
+        </h4>
 
         <span
-          className={`rounded-full px-2.5 py-1 text-xs font-medium ${priorityStyles[task.priority]
-            }`}
+          style={priorityStyles[task.priority]}
+          className="shrink-0 rounded-full px-2.5 py-1 text-xs font-semibold capitalize"
         >
           {task.priority}
         </span>
       </div>
 
-      <p className="mb-4 text-sm leading-6 text-white/60">
+      {/* Description */}
+      <p className="mt-2 line-clamp-2 text-sm leading-5 text-[var(--text-muted)]">
         {task.description}
       </p>
 
-      <div className="flex items-center justify-between text-xs text-white/50">
-        <span>{task.assignee}</span>
+      {/* Footer */}
+      <div className="mt-5 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2">
+          <div className="grid h-7 w-7 place-items-center rounded-full bg-blue-100 text-xs font-medium text-blue-700">
+            {task.assignee?.charAt(0).toUpperCase()}
+          </div>
 
-        <span>
-          {new Date(task.createdAt).toLocaleDateString("tr-TR")}
+          <span className="text-xs text-[var(--text-secondary)]">
+            {task.assignee}
+          </span>
+        </div>
+
+        <span className="text-xs text-[var(--text-muted)]">
+          {new Date(task.createdAt).toLocaleDateString(
+            "en-GB"
+          )}
         </span>
       </div>
     </div>

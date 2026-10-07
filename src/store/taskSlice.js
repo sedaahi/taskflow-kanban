@@ -1,45 +1,46 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    tasks: [
-        {
-            id: 1,
-            title: "Login ekranını geliştir",
-            description: "Kullanıcı giriş ekranının geliştirilmesi",
-            status: "pending",
-            priority: "high",
-            assignee: "Seda",
-            createdAt: "2026-09-22T14:00:00.000Z",
-        },
-        {
-            id: 2,
-            title: "Dashboard tasarımını hazırla",
-            description: "Kanban dashboard arayüzünü oluştur",
-            status: "in-progress",
-            priority: "medium",
-            assignee: "Seda",
-            createdAt: "2026-09-23T10:30:00.000Z",
-        },
-        {
-            id: 3,
-            title: "Proje yapısını oluştur",
-            description: "React proje klasör yapısını hazırla",
-            status: "completed",
-            priority: "low",
-            assignee: "Seda",
-            createdAt: "2026-09-24T09:00:00.000Z",
-        },
-        {
-            id: 4,
-            title: "Review API error handling",
-            description: "Check error scenarios for failed API requests",
-            status: "blocked",
-            priority: "high",
-            assignee: "Seda",
-            createdAt: "2026-09-25T11:00:00.000Z",
-        },
-    ],
-    searchText: "",
+  tasks: [
+    {
+      id: 1,
+      title: "Develop login screen",
+      description: "Create the user login interface",
+      status: "pending",
+      priority: "high",
+      assignee: "Seda",
+      createdAt: "2026-09-22T14:00:00.000Z",
+    },
+    {
+      id: 2,
+      title: "Build dashboard interface",
+      description: "Create the Kanban dashboard interface",
+      status: "in-progress",
+      priority: "medium",
+      assignee: "Seda",
+      createdAt: "2026-09-23T10:30:00.000Z",
+    },
+    {
+      id: 3,
+      title: "Set up project structure",
+      description: "Prepare the React project folder structure",
+      status: "completed",
+      priority: "low",
+      assignee: "Seda",
+      createdAt: "2026-09-24T09:00:00.000Z",
+    },
+    {
+      id: 4,
+      title: "Review API error handling",
+      description: "Check error scenarios for failed API requests",
+      status: "blocked",
+      priority: "high",
+      assignee: "Seda",
+      createdAt: "2026-09-25T11:00:00.000Z",
+    },
+  ],
+
+  searchText: "",
 };
 
 const taskSlice = createSlice({
