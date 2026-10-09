@@ -42,6 +42,7 @@ Features
 - HTML5 Drag and Drop API
 - Browser LocalStorage API
 
+
 ## Getting Started
 
 ### Prerequisites
@@ -54,13 +55,13 @@ Features
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/taskflow.git
+git clone https://github.com/sedaahi/taskflow-kanban.git
 ```
 
 Navigate to the project directory:
 
 ```bash
-cd taskflow
+cd taskflow-kanban
 ```
 
 Install dependencies:
@@ -85,6 +86,7 @@ npm run build
 
 The production-ready files will be generated in the `dist` directory.
 
+
 ## Project Structure
 
 ```text
@@ -104,28 +106,15 @@ TASKFLOW currently uses Redux Toolkit for application state management and brows
 
 Tasks and theme preferences are stored locally in the user's browser. No backend connection is required to run this version.
 
-## Future Improvements
+## Future Roadmap
 
-- REST API integration with Node.js and Express
-- Database persistence
-- User authentication and authorization
-- Multi-user task management
+TASKFLOW is planned to evolve into a full-stack, multi-team task and project management platform.
 
-## Author
+Planned features include:
 
-Developed as a JavaScript/React frontend project.
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Backend & Database:** Node.js/Express REST API integration with persistent database storage.
+- **Authentication & Roles:** Secure login and role-based access for team leaders and members.
+- **Team Management:** Create and manage multiple teams, projects, and team members.
+- **Task Assignment:** Allow team leaders to assign tasks, set priorities, and track progress.
+- **Team Dashboards:** Provide dedicated views for team leaders and members.
+- **Reporting & Analytics:** Track project progress, task completion, and team performance.
