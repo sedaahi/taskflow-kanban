@@ -1,4 +1,119 @@
-# React + Vite
+# TASKFLOW – Task Management Kanban Board
+
+TASKFLOW is a responsive task management application built with React and JavaScript. It provides an intuitive Kanban board to organize tasks, track progress, and manage daily workflows.
+
+The application supports full CRUD operations, drag-and-drop task management, real-time search, and persistent local storage.
+
+## Demo
+
+A quick overview of TASKFLOW's Kanban board, drag-and-drop functionality, and task management features.
+
+
+<p align="center">
+  <img
+    src="./demo/taskflow-demo.gif"
+    alt="TASKFLOW Demo"
+    width="800"
+  />
+</p>
+
+
+Features
+
+- **Kanban Board:** Organize tasks across four columns: Backlog, Active, Completed, and Blocked.
+- **Task Management:** Create, view, edit, and delete tasks.
+- **Drag & Drop:** Move tasks between columns to update their status.
+- **Task Search:** Filter tasks by title, description, or assignee.
+- **Form Validation:** Validate required fields and input lengths.
+- **All Tasks View:** Browse tasks in a responsive table or mobile card layout.
+- **Dark & Light Themes:** Switch themes with preferences saved in LocalStorage.
+- **Persistent Tasks:** Keep task changes after page refresh using LocalStorage.
+- **Responsive Design:** Optimized layouts for desktop, tablet, and mobile devices.
+
+## Tech Stack
+
+- React
+- JavaScript (ES6+)
+- Vite
+- Redux Toolkit
+- React Redux
+- React Router
+- Tailwind CSS
+- HTML5 Drag and Drop API
+- Browser LocalStorage API
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- npm
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/YOUR_USERNAME/taskflow.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd taskflow
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open the local URL displayed in your terminal.
+
+### Production Build
+
+```bash
+npm run build
+```
+
+The production-ready files will be generated in the `dist` directory.
+
+## Project Structure
+
+```text
+src/
+├── components/      # Reusable UI components
+├── pages/           # Board and All Tasks pages
+├── store/           # Redux store and task slice
+├── utils/           # Shared utility functions
+├── App.jsx          # Application routes and layout
+├── index.css        # Global styles and theme variables
+└── main.jsx         # Application entry point
+```
+
+## Data Persistence
+
+TASKFLOW currently uses Redux Toolkit for application state management and browser LocalStorage for data persistence.
+
+Tasks and theme preferences are stored locally in the user's browser. No backend connection is required to run this version.
+
+## Future Improvements
+
+- REST API integration with Node.js and Express
+- Database persistence
+- User authentication and authorization
+- Multi-user task management
+
+## Author
+
+Developed as a JavaScript/React frontend project.
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
