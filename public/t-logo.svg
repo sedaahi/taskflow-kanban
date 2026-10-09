@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 256 256">
+<defs>
+<linearGradient id="stem" x1="99" y1="80" x2="154" y2="222" gradientUnits="userSpaceOnUse"><stop stop-color="#760ae6"/><stop offset=".35" stop-color="#7737ff"/><stop offset=".72" stop-color="#00d8fa"/><stop offset="1" stop-color="#a61cf9"/></linearGradient>
+<linearGradient id="bar" x1="38" y1="35" x2="215" y2="95" gradientUnits="userSpaceOnUse"><stop stop-color="#f529d0"/><stop offset=".4" stop-color="#d713ed"/><stop offset=".74" stop-color="#af0af5"/><stop offset="1" stop-color="#fa2acf"/></linearGradient>
+<linearGradient id="fold" x1="98" y1="97" x2="155" y2="143" gradientUnits="userSpaceOnUse"><stop stop-color="#5011c6"/><stop offset="1" stop-color="#ac22f4"/></linearGradient>
+<linearGradient id="tip" x1="171" y1="34" x2="218" y2="93" gradientUnits="userSpaceOnUse"><stop stop-color="#a800f7"/><stop offset=".45" stop-color="#523bff"/><stop offset="1" stop-color="#00d8fb"/></linearGradient>
+</defs>
+<path fill="url(#stem)" d="M98 73 H157 V184 C157 197 173 205 169 216 Q166 227 151 227 H125 Q98 227 98 201 Z"/>
+<path fill="url(#fold)" d="M98 78 H157 V142 C137 125 115 119 98 106 Z"/>
+<path fill="url(#tip)" d="M180 34 H195 Q225 34 225 61 V77 Q225 100 201 100 H171 V76 C162 66 155 55 159 45 Q164 34 180 34Z"/>
+<path fill="url(#bar)" d="M55 34 H173 C183 34 185 42 190 52 L217 77 Q229 89 218 99 Q211 105 197 104 H59 Q31 104 31 78 V60 Q31 34 55 34Z"/>
+<path fill="#ff65df" opacity=".16" d="M48 38 H170 C177 38 181 43 184 51 H78 Q58 51 48 38Z"/>
+<path fill="#ff6be0" opacity=".18" d="M128 69 C154 73 191 85 213 100 Q188 85 163 90 H144Z"/>
+</svg>

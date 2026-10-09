@@ -11,10 +11,9 @@ const Navbar = ({ theme, onToggleTheme }) => {
   );
 
   const getNavLinkClass = ({ isActive }) =>
-    `rounded-lg px-3 py-2 text-sm transition ${
-      isActive
-        ? "bg-[var(--surface-strong)] text-[var(--text-primary)]"
-        : "text-[var(--text-muted)] hover:bg-[var(--surface-hover)] hover:text-[var(--text-primary)]"
+    `rounded-lg px-3 py-2 text-sm transition ${isActive
+      ? "bg-[var(--surface-strong)] text-[var(--text-primary)]"
+      : "text-[var(--text-muted)] hover:bg-[var(--surface-hover)] hover:text-[var(--text-primary)]"
     }`;
 
   return (
@@ -30,7 +29,11 @@ const Navbar = ({ theme, onToggleTheme }) => {
           >
             <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-[var(--border)] bg-[var(--surface)] backdrop-blur-xl sm:h-11 sm:w-11">
               <span className="text-lg font-bold text-[var(--text-primary)]">
-                T
+                <img
+                  src="/t-logo.png"
+                  alt="TaskFlow Nexus"
+                  className="w-10 h-10 rounded-xl object-cover"
+                />
               </span>
             </div>
 
@@ -101,9 +104,9 @@ const Navbar = ({ theme, onToggleTheme }) => {
           </button>
 
           {/* Avatar */}
-          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-blue-500 text-sm font-medium text-white shadow-lg shadow-blue-950/20">
+          {/* <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-blue-500 text-sm font-medium text-white shadow-lg shadow-blue-950/20">
             S
-          </div>
+          </div> */}
         </div>
       </div>
 
